@@ -30,7 +30,7 @@ export default function App() {
   ];
 
   let [itemsArr, setItemsArr] = useState(defaultItemsArr);
-  let [itemsSelected, setItemsSelected] = useState<number>(0);
+  let [itemsSelected, setItemsSelected] = useState(0);
 
   useEffect(() => {
     setItemsSelected(

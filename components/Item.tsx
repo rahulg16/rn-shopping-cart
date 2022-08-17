@@ -1,10 +1,28 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 
-export default function Item({ id, value, setItemsArr }: any) {
+interface itemParams {
+  id: number;
+  value: number;
+  setItemsArr: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number;
+        value: number;
+      }[]
+    >
+  >;
+}
+
+interface itemInterface {
+  id: number;
+  value: number;
+}
+
+export default function Item({ id, value, setItemsArr }: itemParams) {
   function handleAdd() {
-    setItemsArr((prevArr: any) =>
-      prevArr.map((item: any) => {
+    setItemsArr((prevArr: itemInterface[]) =>
+      prevArr.map((item: itemInterface) => {
         if (item.id == id) {
           return {
             id: id,
@@ -16,8 +34,8 @@ export default function Item({ id, value, setItemsArr }: any) {
   }
 
   function handleRemove() {
-    setItemsArr((prevArr: any) =>
-      prevArr.map((item: any) => {
+    setItemsArr((prevArr: itemInterface[]) =>
+      prevArr.map((item: itemInterface) => {
         if (item.id == id && item.value > 0) {
           return {
             id: id,
@@ -29,8 +47,8 @@ export default function Item({ id, value, setItemsArr }: any) {
   }
 
   function handleDelete() {
-    setItemsArr((prevArr: any) =>
-      prevArr.filter((item: any) => {
+    setItemsArr((prevArr: itemInterface[]) =>
+      prevArr.filter((item: itemInterface) => {
         return id != item.id;
       })
     );
